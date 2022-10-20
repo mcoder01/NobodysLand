@@ -51,6 +51,7 @@ public class ResourceManager {
 		Level level = null;
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fullPath))) {
 			level = (Level) ois.readObject();
+			level.setFileIndex(num);
 		} catch (IOException | ClassNotFoundException e) {
 			System.err.println("[ERROR] Unable to load the level " + relPath);
 		}
@@ -87,6 +88,16 @@ public class ResourceManager {
 		}
 
 		return null;
+	}
+
+	public static void saveData(String player, int nextLevel) {
+		String relPath = player + ".dat";
+		String fullPath = savesPath + relPath;
+		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fullPath))) {
+			oos.writeObject(nextLevel);
+		} catch(IOException e) {
+			System.err.println("[ERROR] Unable to save player progress!");
+		}
 	}
 
 	public static int[] loadAnimation(String name) {

@@ -3,19 +3,22 @@ package com.mcoder.nobodysland.view.level;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.io.ResourceManager;
 import com.mcoder.nobodysland.scene.View;
+import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.sprite.Enemy;
 import com.mcoder.nobodysland.view.sprite.EntityType;
 import com.mcoder.nobodysland.view.sprite.Wave;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Level implements View, MouseMotionListener, Serializable {
+public class Level implements View, MouseListener, MouseMotionListener, Serializable {
 	private static int lastLoadedLevel, lastSavedLevel;
+	private int fileIndex;
 
 	private final Spot[][] grid;
 	private final int size;
@@ -43,7 +46,7 @@ public class Level implements View, MouseMotionListener, Serializable {
 		Enemy[] wave = new Enemy[10];
 		for (int i = 0; i < wave.length; i++)
 			wave[i] = new Enemy(EntityType.SOLDIER, 25, 25, 10);
-		waves.add(new Wave(wave));
+		waves.add(new Wave(this, wave));
 		attackDelay = 10000;
 		spawnRate = 1;
 
@@ -99,11 +102,43 @@ public class Level implements View, MouseMotionListener, Serializable {
 	}
 
 	@Override
+	public void mouseClicked(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		if (!playing) return;
+
+		Spot spot = findSpotUnder(e.getX(), e.getY());
+		if (e.getButton() == MouseEvent.BUTTON1) {
+			if (spot.getFloor() == SpotContent.GRASS && spot.getGun() == null)
+				Game.getPlayer().locateGun(spot);
+		} else if (e.getButton() == MouseEvent.BUTTON3 && spot.getGun() != null)
+			Game.getPlayer().removeGun(spot);
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mouseEntered(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mouseExited(MouseEvent mouseEvent) {}
+
+	@Override
 	public void mouseDragged(MouseEvent mouseEvent) {}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		hovered = findSpotUnder(e.getX(), e.getY());
+	}
+
+	public int getFileIndex() {
+		return fileIndex;
+	}
+
+	public void setFileIndex(int fileIndex) {
+		this.fileIndex = fileIndex;
 	}
 	
 	public LinkedList<Spot> getPath() {
@@ -118,11 +153,8 @@ public class Level implements View, MouseMotionListener, Serializable {
 		return (double) Window.width / size;
 	}
 
-	public Spot[] getNeighbors(Spot spot) {
-		int row = spot.getRow();
-		int col = spot.getCol();
-		return new Spot[] { (col + 1 < size) ? grid[row][col + 1] : null, (row + 1 < size) ? grid[row + 1][col] : null,
-				(col - 1 >= 0) ? grid[row][col - 1] : null, (row - 1 >= 0) ? grid[row - 1][col] : null };
+	public boolean isFinished() {
+		return getCurrentWave().isFinished() && currWave == waves.size()-1;
 	}
 
 	public static Level loadNextLevel() {

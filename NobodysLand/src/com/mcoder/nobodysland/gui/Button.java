@@ -31,12 +31,10 @@ public class Button implements View, MouseListener {
 	}
 
 	@Override
-	public void update() {
-	}
+	public void update() {}
 
 	@Override
-	public void mouseClicked(MouseEvent mouseEvent) {
-	}
+	public void mouseClicked(MouseEvent mouseEvent) {}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -52,12 +50,10 @@ public class Button implements View, MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent mouseEvent) {
-	}
+	public void mouseEntered(MouseEvent mouseEvent) {}
 
 	@Override
-	public void mouseExited(MouseEvent mouseEvent) {
-	}
+	public void mouseExited(MouseEvent mouseEvent) {}
 
 	@Override
 	public void show(Graphics2D g2d) {

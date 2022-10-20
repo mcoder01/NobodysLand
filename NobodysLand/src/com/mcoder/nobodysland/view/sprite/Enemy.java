@@ -61,7 +61,7 @@ public class Enemy extends Entity implements Serializable {
 
 	public void spawn(LinkedList<Spot> path) {
 		this.path = path;
-		Vector v = new Vector(Game.player.getLevel().getSpotSize(), 0);
+		Vector v = new Vector(Game.getPlayer().getLevel().getSpotSize(), 0);
 		pos.set(Vector.sub(path.getFirst().getCenter(), v));
 		vel.set(v);
 		vel.setMag(maxSpeed);
@@ -81,7 +81,7 @@ public class Enemy extends Entity implements Serializable {
 		explosion.add(end);
 		explodeAnim = new Sprite(Texture.EXPLOSION, pos.getX(), pos.getY(), 50, 50);
 		Animator.launch(explosion, explodeAnim);
-		Game.player.hurt(explodeDamage);
+		Game.getPlayer().hurt(explodeDamage);
 		hpLeft = 0;
 	}
 

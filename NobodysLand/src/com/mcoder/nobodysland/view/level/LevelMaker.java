@@ -1,5 +1,6 @@
 package com.mcoder.nobodysland.view.level;
 
+import com.mcoder.nobodysland.gui.GenericMenu;
 import com.mcoder.nobodysland.gui.Inventory;
 import com.mcoder.nobodysland.gui.InventoryItem;
 import com.mcoder.nobodysland.gui.MakerMenu;
@@ -17,15 +18,15 @@ public class LevelMaker extends Display implements MouseListener, MouseMotionLis
 		super();
 
 		level = new Level(size);
-		add(level);
+		addListener(level);
 
 		inventory = new Inventory(50);
 		inventory.add(new InventoryItem(Item.GRASS));
 		inventory.add(new InventoryItem(Item.WAY));
 		inventory.add(new InventoryItem(Item.WAY_TURN));
 		inventory.add(new InventoryItem(Item.WATER));
-		add(inventory);
-		onFocus();
+		addListener(inventory);
+		render();
 	}
 
 	@Override
@@ -33,9 +34,6 @@ public class LevelMaker extends Display implements MouseListener, MouseMotionLis
 
 	@Override
 	public void show(Graphics2D g2d) {
-		if (level == null)
-			return;
-
 		level.show(g2d);
 		inventory.show(g2d);
 	}
@@ -74,7 +72,7 @@ public class LevelMaker extends Display implements MouseListener, MouseMotionLis
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
-			MakerMenu.invoke(this);
+			GenericMenu.invoke(new MakerMenu());
 	}
 
 	@Override

@@ -22,9 +22,9 @@ public abstract class FixedGun extends Entity {
 	private double gunRotation;
 	private final double rotSpeed;
 
-	private final int timePerShoot;
+	private final int tickPerShoot;
 	private final int precision;
-	private long prevTime;
+	private int tickCounter;
 
 	public FixedGun(EntityType type, Spot spot, float shootRate, int hp) {
 		super(type, spot.getCenter().getX(), spot.getCenter().getY(), spot.getSize(), spot.getSize(), hp);
@@ -42,14 +42,13 @@ public abstract class FixedGun extends Entity {
 		rotSpeed = 0.5;
 		precision = 45;
 
-		timePerShoot = (int) (1.0E3 / shootRate);
-		prevTime = System.currentTimeMillis();
+		tickPerShoot = 30;
 	}
 
 	@Override
 	public void update() {
 		if (isAlive()) {
-			Wave wave = Game.player.getLevel().getCurrentWave();
+			Wave wave = Game.getPlayer().getLevel().getCurrentWave();
 			if (target == null && wave.isAttacking())
 				// Find target enemy
 				target = wave.getFirstLineEnemy();
@@ -60,14 +59,13 @@ public abstract class FixedGun extends Entity {
 				gunRotation = aim(forward);
 
 				if (targetAcquired(forward)) {
-					long currTime = System.currentTimeMillis();
-					if (currTime - prevTime >= timePerShoot) {
+					tickCounter++;
+					if (tickCounter == tickPerShoot) {
 						// Shoot
 						shoot();
-						prevTime = currTime;
+						tickCounter = 0;
 					}
-				} else
-					prevTime = System.currentTimeMillis();
+				} else tickCounter = 0;
 
 				if (!target.isAlive() || target.offScreen())
 					target = null;
@@ -77,7 +75,7 @@ public abstract class FixedGun extends Entity {
 		ArrayList<Bullet> toRemove = new ArrayList<>();
 		for (Bullet bullet : bullets) {
 			bullet.update();
-			Game.player.getLevel().getCurrentWave().checkCollisions(bullet);
+			Game.getPlayer().getLevel().getCurrentWave().checkCollisions(bullet);
 			if (!bullet.isAlive())
 				toRemove.add(bullet);
 		}

@@ -1,29 +1,29 @@
 package com.mcoder.nobodysland.view.sprite;
 
 import com.mcoder.nobodysland.scene.View;
-import com.mcoder.nobodysland.view.Game;
+import com.mcoder.nobodysland.view.level.Level;
 
 import java.awt.*;
 import java.io.Serializable;
 
 public class Wave implements View, Serializable {
+	private final Level level;
 	private final Enemy[] enemies;
-	private long prevTime;
-	private int timePerSpawn;
-	private boolean attacking;
+	private int tickPerSpawn, tickCounter;
+	private boolean attacking, finished;
 	private int currEnemy;
 
-	public Wave(Enemy... enemies) {
+	public Wave(Level level, Enemy[] enemies) {
+		this.level = level;
 		this.enemies = enemies;
 	}
 
 	public void startAttack(int spawnRate) {
-		enemies[0].spawn(Game.player.getLevel().getPath());
+		enemies[0].spawn(level.getPath());
 		currEnemy = 1;
 		attacking = true;
-
-		timePerSpawn = (int) (1.0E3 / spawnRate);
-		prevTime = System.currentTimeMillis();
+		tickPerSpawn = 60;
+		tickCounter = 0;
 	}
 
 	@Override
@@ -32,10 +32,16 @@ public class Wave implements View, Serializable {
 			return;
 
 		if (currEnemy < enemies.length) {
-			long currTime = System.currentTimeMillis();
-			if (currTime - prevTime >= timePerSpawn) {
-				enemies[currEnemy++].spawn(Game.player.getLevel().getPath());
-				prevTime = currTime;
+			tickCounter++;
+			if (tickCounter == tickPerSpawn) {
+				enemies[currEnemy++].spawn(level.getPath());
+				tickCounter = 0;
+			}
+		} else {
+			finished = true;
+			for (int i = 0; i < currEnemy; i++) {
+				if (enemies[i].isAlive() && !enemies[i].offScreen())
+					finished = false;
 			}
 		}
 
@@ -68,5 +74,9 @@ public class Wave implements View, Serializable {
 
 	public boolean isAttacking() {
 		return attacking;
+	}
+
+	public boolean isFinished() {
+		return finished;
 	}
 }

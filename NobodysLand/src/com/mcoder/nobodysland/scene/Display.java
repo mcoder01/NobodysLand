@@ -7,20 +7,38 @@ import java.awt.event.MouseWheelListener;
 import java.util.EventListener;
 import java.util.LinkedList;
 
-public abstract class Display extends LinkedList<EventListener> implements EventListener, View {
+public abstract class Display implements View {
+	protected final LinkedList<EventListener> listeners;
+	protected boolean updating;
+
 	protected Display() {
-		super();
+		listeners = new LinkedList<>();
+		updating = true;
+	}
+
+	public void render() {
 		Screen.getInstance().addDrawer(this);
 	}
 
+	public void addListener(EventListener listener) {
+		listeners.add(listener);
+	}
+
+	public void removeListener(EventListener listener) {
+		listeners.remove(listener);
+	}
+
 	public void onFocus() {
-		focus(this);
-		forEach(this::focus);
+		if (this instanceof EventListener)
+			focus((EventListener) this);
+		listeners.forEach(this::focus);
 	}
 
 	public void onFocusLost() {
-		forEach(this::unfocus);
-		unfocus(this);
+		listeners.forEach(this::unfocus);
+		listeners.clear();
+		if (this instanceof EventListener)
+			unfocus((EventListener) this);
 	}
 
 	private void unfocus(EventListener l) {
@@ -49,5 +67,13 @@ public abstract class Display extends LinkedList<EventListener> implements Event
 
 		if (l instanceof KeyListener)
 			Screen.getInstance().addKeyListener((KeyListener) l);
+	}
+
+	public void stopUpdating() {
+		updating = false;
+	}
+
+	public boolean isUpdating() {
+		return updating;
 	}
 }
