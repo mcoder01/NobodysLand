@@ -1,9 +1,9 @@
 package com.mcoder.nobodysland.view.level;
 
-import com.mcoder.nobodysland.gui.GenericMenu;
+import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.Inventory;
 import com.mcoder.nobodysland.gui.InventoryItem;
-import com.mcoder.nobodysland.gui.MakerMenu;
+import com.mcoder.nobodysland.gui.menu.MakerMenu;
 import com.mcoder.nobodysland.scene.Display;
 import com.mcoder.nobodysland.view.Item;
 

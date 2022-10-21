@@ -1,7 +1,6 @@
 package com.mcoder.nobodysland.view.level;
 
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.io.ResourceManager;
 import com.mcoder.nobodysland.scene.View;
 import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.sprite.Enemy;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Level implements View, MouseListener, MouseMotionListener, Serializable {
-	private static int lastLoadedLevel, lastSavedLevel;
 	private int fileIndex;
 
 	private final Spot[][] grid;
@@ -155,15 +153,5 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 
 	public boolean isFinished() {
 		return getCurrentWave().isFinished() && currWave == waves.size()-1;
-	}
-
-	public static Level loadNextLevel() {
-		return ResourceManager.loadLevel(++lastLoadedLevel);
-	}
-
-	public static void saveNextLevel(Level level) {
-		if (lastSavedLevel == 0)
-			lastSavedLevel = ResourceManager.findLastLevel();
-		ResourceManager.saveLevel(level, ++lastSavedLevel);
 	}
 }

@@ -1,7 +1,5 @@
 package com.mcoder.nobodysland.view;
 
-import com.mcoder.nobodysland.gui.GenericMenu;
-import com.mcoder.nobodysland.gui.MainMenu;
 import com.mcoder.nobodysland.view.level.Level;
 import com.mcoder.nobodysland.view.level.LevelMaker;
 import com.mcoder.nobodysland.view.level.LevelPlayer;
@@ -11,10 +9,6 @@ public class Game {
 
 	private static LevelMaker maker;
 	private static LevelPlayer player;
-
-	public static void showMenu() {
-		GenericMenu.invoke(new MainMenu());
-	}
 
 	public static void makeNewLevel() {
 		maker = new LevelMaker(15);

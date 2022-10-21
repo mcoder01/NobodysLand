@@ -9,11 +9,9 @@ import java.util.LinkedList;
 
 public abstract class Display implements View {
 	protected final LinkedList<EventListener> listeners;
-	protected boolean updating;
 
 	protected Display() {
 		listeners = new LinkedList<>();
-		updating = true;
 	}
 
 	public void render() {
@@ -67,13 +65,5 @@ public abstract class Display implements View {
 
 		if (l instanceof KeyListener)
 			Screen.getInstance().addKeyListener((KeyListener) l);
-	}
-
-	public void stopUpdating() {
-		updating = false;
-	}
-
-	public boolean isUpdating() {
-		return updating;
 	}
 }

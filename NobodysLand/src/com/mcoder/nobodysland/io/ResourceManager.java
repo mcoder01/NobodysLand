@@ -13,8 +13,13 @@ public class ResourceManager {
 	private static final String levelPath = resPath + "levels/";
 	private static final String savesPath = resPath + "saves/";
 
+	private static int lastSavedLevel;
 	private static final String modelDataDelim = "=";
 	private static final int animationDataSize = 3;
+
+	static {
+		lastSavedLevel = findLastLevel();
+	}
 
 	public static BufferedImage loadTexture(String name) {
 		BufferedImage image = null;
@@ -67,8 +72,9 @@ public class ResourceManager {
 		return 0;
 	}
 
-	public static void saveLevel(Level level, int num) {
-		String relPath = "level" + num + ".dat";
+	public static void saveLevel(Level level) {
+		level.setFileIndex(lastSavedLevel++);
+		String relPath = "level" + lastSavedLevel + ".dat";
 		String fullPath = levelPath + relPath;
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fullPath))) {
 			oos.writeObject(level);
@@ -77,17 +83,16 @@ public class ResourceManager {
 		}
 	}
 
-	public static Level loadLastSave(String player) {
+	public static int loadLastSave(String player) {
 		String relPath = player + ".dat";
 		String fullPath = savesPath + relPath;
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fullPath))) {
-			int save = (int) ois.readObject();
-			return loadLevel(save);
+			return (int) ois.readObject();
 		} catch (IOException | ClassNotFoundException e) {
 			System.err.println("[ERROR] Unable to load player progress!");
 		}
 
-		return null;
+		return -1;
 	}
 
 	public static void saveData(String player, int nextLevel) {
@@ -97,6 +102,20 @@ public class ResourceManager {
 			oos.writeObject(nextLevel);
 		} catch(IOException e) {
 			System.err.println("[ERROR] Unable to save player progress!");
+		}
+	}
+
+	public static void removeSave(String player) {
+		String relPath = player + ".dat";
+		String fullPath = savesPath + relPath;
+		File file = new File(fullPath);
+		if (file.exists()) {
+			try {
+				if (!file.delete())
+					throw new SecurityException();
+			} catch(SecurityException e) {
+				System.err.println("[ERROR] Unable to delete game progress!");
+			}
 		}
 	}
 

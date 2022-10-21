@@ -1,6 +1,7 @@
 package com.mcoder.nobodysland;
 
-import com.mcoder.nobodysland.view.Game;
+import com.mcoder.nobodysland.gui.menu.GenericMenu;
+import com.mcoder.nobodysland.gui.menu.MainMenu;
 import com.mcoder.nobodysland.scene.Screen;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class Window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 
-		Game.showMenu();
+		GenericMenu.invoke(new MainMenu());
 		Screen.getInstance().start();
 	}
 }

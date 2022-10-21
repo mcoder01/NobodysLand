@@ -1,4 +1,4 @@
-package com.mcoder.nobodysland.gui;
+package com.mcoder.nobodysland.gui.widget;
 
 import com.mcoder.nobodysland.scene.View;
 import com.mcoder.nobodysland.view.Texture;
@@ -9,8 +9,8 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 
 public class Button implements View, MouseListener {
-	private final String label;
 	private final int x, y, width, height;
+	private final Label label;
 	private Runnable onClick;
 	private boolean clicked, enabled;
 
@@ -21,12 +21,14 @@ public class Button implements View, MouseListener {
 		active = Texture.BUTTON.getImage().getSubimage(0, 120, 400, 120);
 	}
 
-	public Button(String label, int x, int y, int width, int height) {
-		this.label = label;
+	public Button(String text, int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+
+		label = new Label(text, x+width/2, y+height/2);
+		label.center(true, true);
 		enabled = true;
 	}
 
@@ -62,13 +64,7 @@ public class Button implements View, MouseListener {
 		else
 			g2d.drawImage(normal, x, y, width, height, null);
 
-		g2d.setFont(Font.decode("arial-REGULAR-18"));
-		FontMetrics metrics = g2d.getFontMetrics();
-		int textWidth = metrics.stringWidth(label);
-		int textHeight = metrics.getHeight();
-
-		g2d.setColor(Color.BLACK);
-		g2d.drawString(label, x + width / 2 - textWidth / 2, y + height / 2 + textHeight / 4);
+		label.show(g2d);
 
 		if (!enabled) {
 			g2d.setColor(new Color(0, 0, 0, 0.2f));

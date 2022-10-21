@@ -1,10 +1,14 @@
 package com.mcoder.nobodysland.view.level;
 
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.gui.Inventory;
-import com.mcoder.nobodysland.gui.InventoryItem;
+import com.mcoder.nobodysland.gui.*;
+import com.mcoder.nobodysland.gui.menu.GenericMenu;
+import com.mcoder.nobodysland.gui.menu.LevelLostMenu;
+import com.mcoder.nobodysland.gui.menu.LevelPassedMenu;
+import com.mcoder.nobodysland.io.ResourceManager;
 import com.mcoder.nobodysland.scene.Display;
 import com.mcoder.nobodysland.scene.Screen;
+import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.Item;
 import com.mcoder.nobodysland.view.Texture;
 import com.mcoder.nobodysland.view.sprite.EntityType;
@@ -22,6 +26,7 @@ public class LevelPlayer extends Display {
 
 	private final int playerHp;
 	private int playerHpLeft;
+	private boolean done;
 
 	public LevelPlayer(Level level) {
 		super();
@@ -51,11 +56,16 @@ public class LevelPlayer extends Display {
 			inventory.update();
 		else Screen.getInstance().setTickSpeed(200);
 
-		/*if (level.isFinished() && playerHpLeft > 0) {
-			GenericMenu.invoke(new LevelFinishMenu());
-			ResourceManager.saveData(Game.getUser(), level.getFileIndex() + 1);
-			noLoop();
-		}*/
+		if (!done && level.isFinished()) {
+			if (playerHpLeft > 0) {
+				GenericMenu.invoke(new LevelPassedMenu());
+				ResourceManager.saveData(Game.getUser(), level.getFileIndex() + 1);
+			} else {
+				GenericMenu.invoke(new LevelLostMenu());
+				ResourceManager.saveData(Game.getUser(), 1);
+			}
+			done = true;
+		}
 	}
 
 	public void locateGun(Spot spot) {
@@ -115,9 +125,5 @@ public class LevelPlayer extends Display {
 
 	public Level getLevel() {
 		return level;
-	}
-
-	public LinkedList<FixedGun> getGuns() {
-		return guns;
 	}
 }
