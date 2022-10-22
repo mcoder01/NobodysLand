@@ -67,7 +67,7 @@ public class Button implements View, MouseListener {
 		label.show(g2d);
 
 		if (!enabled) {
-			g2d.setColor(new Color(0, 0, 0, 0.2f));
+			g2d.setColor(new Color(0, 0, 0, 0.35f));
 			g2d.fillRect(x, y, width, height);
 		}
 	}

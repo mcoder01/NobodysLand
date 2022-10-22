@@ -19,6 +19,7 @@ public class ResourceManager {
 
 	static {
 		lastSavedLevel = findLastLevel();
+		System.out.println(lastSavedLevel);
 	}
 
 	public static BufferedImage loadTexture(String name) {
@@ -51,6 +52,8 @@ public class ResourceManager {
 	}
 
 	public static Level loadLevel(int num) {
+		if (num < 1) return null;
+		
 		String relPath = "level" + num + ".dat";
 		String fullPath = levelPath + relPath;
 		Level level = null;
@@ -66,10 +69,13 @@ public class ResourceManager {
 
 	public static int findLastLevel() {
 		File dir = new File(levelPath);
-		String[] levels = dir.list();
-		if (levels != null && levels.length > 0 && loadLevel(levels.length) != null)
-			return levels.length;
-		return 0;
+		String[] files = dir.list();
+		int count = 0;
+		if (files != null)
+			for (int i = 0; i < files.length; i++)
+				if (files[i].matches("level[0-9]+.dat"))
+					count++;
+		return count;
 	}
 
 	public static void saveLevel(Level level) {
