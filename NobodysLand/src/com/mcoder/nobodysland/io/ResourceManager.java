@@ -8,18 +8,26 @@ import java.io.*;
 import java.util.HashMap;
 
 public class ResourceManager {
-	private static final String resPath = "res/";
-	private static final String texturePath = resPath + "textures/";
-	private static final String levelPath = resPath + "levels/";
-	private static final String savesPath = resPath + "saves/";
+	private static final String resPath = "res" + File.separator;
+	private static final String texturePath = resPath + "textures" + File.separator;
+	private static final String levelPath = resPath + "levels" + File.separator;
+
+	private static final String gameDataPath = System.getProperty("user.dir") + File.separator + "NobodysLand" + File.separator;
+	private static final String savesPath = gameDataPath + "saves" + File.separator;
 
 	private static int lastSavedLevel;
 	private static final String modelDataDelim = "=";
 	private static final int animationDataSize = 3;
 
 	static {
+		File savesDir = new File(savesPath);
+		if (!savesDir.exists())
+			if (!savesDir.mkdirs()) {
+				System.err.println("[ERROR] Unable to create game data folders!");
+				System.exit(1);
+			}
+
 		lastSavedLevel = findLastLevel();
-		System.out.println(lastSavedLevel);
 	}
 
 	public static BufferedImage loadTexture(String name) {
@@ -72,8 +80,8 @@ public class ResourceManager {
 		String[] files = dir.list();
 		int count = 0;
 		if (files != null)
-			for (int i = 0; i < files.length; i++)
-				if (files[i].matches("level[0-9]+.dat"))
+			for (String file : files)
+				if (file.matches("level[0-9]+.dat"))
 					count++;
 		return count;
 	}

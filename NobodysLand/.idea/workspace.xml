@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Added more menus and the navigation system">
-      <change afterPath="$PROJECT_DIR$/res/saves/player01.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Fixed level 2 and the tick rate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/levels/level1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/level1.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/levels/level2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/level2.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/io/ResourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/io/ResourceManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666378574975</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed level 2 and the tick rate">
+      <created>1668636929833</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1668636929833</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,7 +229,8 @@
     <MESSAGE value="Improved Input Control System" />
     <MESSAGE value="Added main menu, game progress management and improved Input Control System" />
     <MESSAGE value="Added more menus and the navigation system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more menus and the navigation system" />
+    <MESSAGE value="Fixed level 2 and the tick rate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed level 2 and the tick rate" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
