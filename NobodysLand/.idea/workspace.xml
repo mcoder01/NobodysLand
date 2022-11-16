@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Added main menu, game progress management and improved Input Control System">
-      <change afterPath="$PROJECT_DIR$/res/levels/level2.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/LevelPassedMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/widget/Label.java" afterDir="false" />
+    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Added more menus and the navigation system">
+      <change afterPath="$PROJECT_DIR$/res/saves/player01.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/res/levels/level1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/level1.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/saves/player01.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/widget/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/GenericMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/GenericMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/LevelFinishMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/LevelLostMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/MakerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/MakerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/io/ResourceManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/io/ResourceManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Screen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/levels/level2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/res/levels/level2.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666276089757</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added more menus and the navigation system">
+      <created>1666378574975</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666378574975</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -231,7 +226,8 @@
     <MESSAGE value="Updated some dynamics of the game" />
     <MESSAGE value="Improved Input Control System" />
     <MESSAGE value="Added main menu, game progress management and improved Input Control System" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added main menu, game progress management and improved Input Control System" />
+    <MESSAGE value="Added more menus and the navigation system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more menus and the navigation system" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

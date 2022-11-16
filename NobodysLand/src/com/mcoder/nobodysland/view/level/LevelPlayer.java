@@ -1,13 +1,13 @@
 package com.mcoder.nobodysland.view.level;
 
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.gui.*;
+import com.mcoder.nobodysland.gui.Inventory;
+import com.mcoder.nobodysland.gui.InventoryItem;
 import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.menu.LevelLostMenu;
 import com.mcoder.nobodysland.gui.menu.LevelPassedMenu;
 import com.mcoder.nobodysland.io.ResourceManager;
 import com.mcoder.nobodysland.scene.Display;
-import com.mcoder.nobodysland.scene.Screen;
 import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.Item;
 import com.mcoder.nobodysland.view.Texture;
@@ -54,7 +54,7 @@ public class LevelPlayer extends Display {
 
 		if (!level.getCurrentWave().isAttacking())
 			inventory.update();
-		else Screen.getInstance().setTickSpeed(200);
+		//else Screen.getInstance().setTickSpeed(200);
 
 		if (!done && level.isFinished()) {
 			if (playerHpLeft > 0) {

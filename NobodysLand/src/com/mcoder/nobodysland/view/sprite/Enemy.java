@@ -23,7 +23,7 @@ public class Enemy extends Entity implements Serializable {
 
 	public Enemy(EntityType type, double w, double h, int hp) {
 		super(type, 0, 0, w, h, hp);
-		explodeDamage = 3;
+		explodeDamage = 5;
 		maxSpeed = 1;
 	}
 
