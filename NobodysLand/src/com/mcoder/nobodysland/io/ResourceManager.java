@@ -8,24 +8,25 @@ import java.io.*;
 import java.util.HashMap;
 
 public class ResourceManager {
-	private static final String resPath = "res" + File.separator;
-	private static final String texturePath = resPath + "textures" + File.separator;
-	private static final String levelPath = resPath + "levels" + File.separator;
+	private static final String texturePath = "textures" + File.separator;
 
 	private static final String gameDataPath = System.getProperty("user.dir") + File.separator + "NobodysLand" + File.separator;
 	private static final String savesPath = gameDataPath + "saves" + File.separator;
+	private static final String levelPath = gameDataPath + "levels" + File.separator;
 
 	private static int lastSavedLevel;
 	private static final String modelDataDelim = "=";
 	private static final int animationDataSize = 3;
 
 	static {
-		File savesDir = new File(savesPath);
-		if (!savesDir.exists())
-			if (!savesDir.mkdirs()) {
-				System.err.println("[ERROR] Unable to create game data folders!");
-				System.exit(1);
-			}
+		try {
+			File savesDir = new File(savesPath);
+			if (!savesDir.exists() && !savesDir.mkdirs())
+				throw new FileNotFoundException("File not found");
+		} catch(FileNotFoundException e) {
+			System.err.println("[ERROR] Unable to access game data folder!");
+			System.exit(1);
+		}
 
 		lastSavedLevel = findLastLevel();
 	}
@@ -34,7 +35,7 @@ public class ResourceManager {
 		BufferedImage image = null;
 		String path = texturePath + name + ".png";
 		try {
-			image = ImageIO.read(new File(path));
+			image = ImageIO.read(getResource(path));
 		} catch (IOException e) {
 			System.err.println("[ERROR] Unable to load the texture: " + name);
 			System.exit(-1);
@@ -46,7 +47,7 @@ public class ResourceManager {
 	public static HashMap<String, Double> loadModel(String name) {
 		HashMap<String, Double> data = new HashMap<>();
 		String path = texturePath + name + ".txt";
-		try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getResource(path)))) {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] info = line.trim().split(modelDataDelim);
@@ -61,7 +62,7 @@ public class ResourceManager {
 
 	public static Level loadLevel(int num) {
 		if (num < 1) return null;
-		
+
 		String relPath = "level" + num + ".dat";
 		String fullPath = levelPath + relPath;
 		Level level = null;
@@ -98,8 +99,7 @@ public class ResourceManager {
 	}
 
 	public static int loadLastSave(String player) {
-		String relPath = player + ".dat";
-		String fullPath = savesPath + relPath;
+		String fullPath = savesPath + player + ".dat";
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fullPath))) {
 			return (int) ois.readObject();
 		} catch (IOException | ClassNotFoundException e) {
@@ -110,8 +110,7 @@ public class ResourceManager {
 	}
 
 	public static void saveData(String player, int nextLevel) {
-		String relPath = player + ".dat";
-		String fullPath = savesPath + relPath;
+		String fullPath = savesPath + player + ".dat";
 		try(ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fullPath))) {
 			oos.writeObject(nextLevel);
 		} catch(IOException e) {
@@ -120,14 +119,13 @@ public class ResourceManager {
 	}
 
 	public static void removeSave(String player) {
-		String relPath = player + ".dat";
-		String fullPath = savesPath + relPath;
-		File file = new File(fullPath);
+		String relPath = savesPath + player + ".dat";
+		File file = new File(relPath);
 		if (file.exists()) {
 			try {
 				if (!file.delete())
-					throw new SecurityException();
-			} catch(SecurityException e) {
+					throw new IOException();
+			} catch(IOException e) {
 				System.err.println("[ERROR] Unable to delete game progress!");
 			}
 		}
@@ -137,7 +135,7 @@ public class ResourceManager {
 		String relPath = name + ".txt";
 		String fullPath = texturePath + relPath;
 		int[] data = new int[animationDataSize];
-		try (BufferedReader reader = new BufferedReader(new FileReader(fullPath))) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getResource(fullPath)))) {
 			String line;
 			int k = 0;
 			while ((line = reader.readLine()) != null)
@@ -147,5 +145,9 @@ public class ResourceManager {
 		}
 
 		return data;
+	}
+
+	private static InputStream getResource(String path) {
+		return ResourceManager.class.getClassLoader().getResourceAsStream(path);
 	}
 }
