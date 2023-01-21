@@ -6,6 +6,7 @@ import com.mcoder.nobodysland.gui.InventoryItem;
 import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.menu.LevelLostMenu;
 import com.mcoder.nobodysland.gui.menu.LevelPassedMenu;
+import com.mcoder.nobodysland.gui.menu.LevelPauseMenu;
 import com.mcoder.nobodysland.io.ResourceManager;
 import com.mcoder.nobodysland.scene.Display;
 import com.mcoder.nobodysland.view.Game;
@@ -16,9 +17,11 @@ import com.mcoder.nobodysland.view.sprite.placeable.FixedGun;
 import com.mcoder.nobodysland.view.sprite.placeable.Turret;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.LinkedList;
 
-public class LevelPlayer extends Display {
+public class LevelPlayer extends Display implements KeyListener {
 	private final Level level;
 	private final Inventory inventory;
 
@@ -47,6 +50,8 @@ public class LevelPlayer extends Display {
 
 	@Override
 	public void update() {
+		if (level.isPaused())
+			level.resumeGame();
 		level.update();
 
 		for (FixedGun gun : guns)
@@ -126,4 +131,18 @@ public class LevelPlayer extends Display {
 	public Level getLevel() {
 		return level;
 	}
+
+	@Override
+	public void keyTyped(KeyEvent keyEvent) {}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			level.pauseGame();
+			GenericMenu.invoke(new LevelPauseMenu());
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent keyEvent) {}
 }

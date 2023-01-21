@@ -10,11 +10,6 @@ import com.mcoder.nobodysland.gui.widget.Button;
 import java.awt.*;
 
 public class MainMenu extends GenericMenu {
-	public MainMenu() {
-		super();
-		setCloseable(false);
-	}
-
 	@Override
 	public void prepare() {
 		Button newGame = new Button("Start a new game", Window.width / 2 - 100, Window.height / 2 - 95, 200, 40);

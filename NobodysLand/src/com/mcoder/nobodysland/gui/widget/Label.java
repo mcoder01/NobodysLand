@@ -16,7 +16,7 @@ public class Label implements View {
         this.x = x;
         this.y = y;
 
-        textColor = Color.BLACK;
+        textColor = Color.WHITE;
         font = Font.decode("arial-REGULAR-18");
     }
 

@@ -25,9 +25,9 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 
 	private final ArrayList<Wave> waves;
 	private int currWave;
-	private long prevTime;
+	private long prevTime, pauseTime;
 	private final int attackDelay, spawnRate;
-	private boolean highlighting, playing;
+	private boolean highlighting, playing, paused;
 
 	public Level(int size) {
 		super();
@@ -55,6 +55,16 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 		prevTime = System.currentTimeMillis();
 		currWave = 0;
 		playing = true;
+	}
+
+	public void pauseGame() {
+		pauseTime = System.currentTimeMillis();
+		paused = true;
+	}
+
+	public void resumeGame() {
+		prevTime = System.currentTimeMillis()-pauseTime+prevTime;
+		paused = false;
 	}
 
 	@Override
@@ -153,5 +163,9 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 
 	public boolean isFinished() {
 		return getCurrentWave().isFinished() && currWave == waves.size()-1;
+	}
+
+	public boolean isPaused() {
+		return paused;
 	}
 }

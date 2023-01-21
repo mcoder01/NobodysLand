@@ -95,8 +95,8 @@ public class Screen extends Canvas {
 	}
 
 	private void tick() {
-		for (Display drawer : drawers)
-			drawer.update();
+		if (drawers.size() > 0)
+			drawers.getLast().update();
 	}
 
 	private void draw() {

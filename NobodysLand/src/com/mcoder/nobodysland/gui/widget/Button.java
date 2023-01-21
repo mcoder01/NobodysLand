@@ -6,13 +6,15 @@ import com.mcoder.nobodysland.view.Texture;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 
-public class Button implements View, MouseListener {
-	private final int x, y, width, height;
+public class Button implements View, MouseListener, MouseMotionListener {
+	private final int width, height;
+	private int x, y;
 	private final Label label;
 	private Runnable onClick;
-	private boolean clicked, enabled;
+	private boolean hovered, clicked, enabled;
 
 	private final BufferedImage normal, active;
 
@@ -59,7 +61,7 @@ public class Button implements View, MouseListener {
 
 	@Override
 	public void show(Graphics2D g2d) {
-		if (clicked)
+		if (hovered)
 			g2d.drawImage(active, x, y, width, height, null);
 		else
 			g2d.drawImage(normal, x, y, width, height, null);
@@ -67,7 +69,7 @@ public class Button implements View, MouseListener {
 		label.show(g2d);
 
 		if (!enabled) {
-			g2d.setColor(new Color(0, 0, 0, 0.35f));
+			g2d.setColor(new Color(0, 0, 0, 0.5f));
 			g2d.fillRect(x, y, width, height);
 		}
 	}
@@ -78,5 +80,22 @@ public class Button implements View, MouseListener {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		hovered = e.getX() >= x && e.getX() <= x+width
+			&& e.getY() >= y && e.getY() <= y+height;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }
