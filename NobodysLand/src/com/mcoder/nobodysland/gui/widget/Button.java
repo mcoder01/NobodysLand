@@ -1,7 +1,7 @@
 package com.mcoder.nobodysland.gui.widget;
 
-import com.mcoder.nobodysland.scene.View;
-import com.mcoder.nobodysland.view.Texture;
+import com.mcoder.j2dge.scene.View;
+import com.mcoder.nobodysland.view.TextureConstants;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -17,8 +17,8 @@ public class Button implements View, MouseListener {
 	private final BufferedImage normal, active;
 
 	{
-		normal = Texture.BUTTON.getImage().getSubimage(0, 0, 400, 120);
-		active = Texture.BUTTON.getImage().getSubimage(0, 120, 400, 120);
+		normal = TextureConstants.BUTTON.getTexture().getImage();
+		active = TextureConstants.BUTTON.getTexture().getImage();
 	}
 
 	public Button(String text, int x, int y, int width, int height) {

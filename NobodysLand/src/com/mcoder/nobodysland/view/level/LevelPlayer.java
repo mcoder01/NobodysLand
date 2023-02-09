@@ -1,5 +1,6 @@
 package com.mcoder.nobodysland.view.level;
 
+import com.mcoder.j2dge.scene.Display;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.gui.Inventory;
 import com.mcoder.nobodysland.gui.InventoryItem;
@@ -7,18 +8,19 @@ import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.menu.LevelLostMenu;
 import com.mcoder.nobodysland.gui.menu.LevelPassedMenu;
 import com.mcoder.nobodysland.io.ResourceManager;
-import com.mcoder.nobodysland.scene.Display;
 import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.Item;
-import com.mcoder.nobodysland.view.Texture;
+import com.mcoder.nobodysland.view.TextureConstants;
 import com.mcoder.nobodysland.view.sprite.EntityType;
 import com.mcoder.nobodysland.view.sprite.placeable.FixedGun;
 import com.mcoder.nobodysland.view.sprite.placeable.Turret;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.LinkedList;
 
-public class LevelPlayer extends Display {
+public class LevelPlayer extends Display implements MouseListener {
 	private final Level level;
 	private final Inventory inventory;
 
@@ -41,6 +43,7 @@ public class LevelPlayer extends Display {
 		playerHp = 15;
 		playerHpLeft = playerHp;
 
+		addListener(this);
 		level.startGame();
 		render();
 	}
@@ -109,7 +112,7 @@ public class LevelPlayer extends Display {
 		float hpRatio = (float) playerHpLeft / playerHp;
 		Composite oldComposite = g2d.getComposite();
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - hpRatio));
-		g2d.drawImage(Texture.PLAYER_DAMAGE.getImage(), 0, 0, Window.width, Window.height, null);
+		g2d.drawImage(TextureConstants.PLAYER_DAMAGE.getTexture().getImage(), 0, 0, Window.width, Window.height, null);
 		g2d.setComposite(oldComposite);
 
 		if (!level.getCurrentWave().isAttacking())
@@ -126,4 +129,26 @@ public class LevelPlayer extends Display {
 	public Level getLevel() {
 		return level;
 	}
+
+	@Override
+	public void mouseClicked(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		Spot spot = level.findSpotUnder(e.getX(), e.getY());
+		if (e.getButton() == MouseEvent.BUTTON1) {
+			if (spot.getFloor() == SpotContent.GRASS && spot.getGun() == null)
+				Game.getPlayer().locateGun(spot);
+		} else if (e.getButton() == MouseEvent.BUTTON3 && spot.getGun() != null)
+			Game.getPlayer().removeGun(spot);
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mouseEntered(MouseEvent mouseEvent) {}
+
+	@Override
+	public void mouseExited(MouseEvent mouseEvent) {}
 }

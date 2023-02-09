@@ -1,6 +1,7 @@
 package com.mcoder.nobodysland.view.sprite;
 
-import com.mcoder.nobodysland.math.Vector;
+import com.mcoder.j2dge.math.Vector;
+import com.mcoder.j2dge.view.sprite.Sprite;
 
 import java.awt.*;
 
@@ -27,7 +28,7 @@ public class Bullet extends Entity {
 	}
 
 	public boolean hits(Sprite s) {
-		return Vector.dist(pos, s.pos) < radius + s.w;
+		return Vector.dist(pos, s.getPos()) < radius + s.getWidth();
 	}
 
 	@Override

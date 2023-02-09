@@ -1,16 +1,22 @@
 package com.mcoder.nobodysland.view.level;
 
+import com.mcoder.j2dge.view.sprite.Texture;
 import com.mcoder.nobodysland.view.Item;
-import com.mcoder.nobodysland.view.Texture;
+import com.mcoder.nobodysland.view.TextureConstants;
 
 public enum SpotContent {
-	GRASS(Texture.GRASS, false), WAY(Texture.WAY, true), WAY_TURN(Texture.WAY_TURN, true), WATER(Texture.WATER, false);
+	GRASS(TextureConstants.GRASS, new int[] {1, 1, 1, 1}, false),
+	WAY(TextureConstants.WAY, new int[] {0, 1, 0, 1}, true),
+	WAY_TURN(TextureConstants.WAY_TURN, new int[] {0, 1, 1, 0}, true),
+	WATER(TextureConstants.WATER, new int[] {1, 1, 1, 1}, false);
 
-	private final Texture texture;
+	private final TextureConstants textureConstants;
+	private final int[] anchorPoints;
 	private final boolean rotatable;
 
-	SpotContent(Texture texture, boolean rotatable) {
-		this.texture = texture;
+	SpotContent(TextureConstants textureConstants, int[] anchorPoints, boolean rotatable) {
+		this.textureConstants = textureConstants;
+		this.anchorPoints = anchorPoints;
 		this.rotatable = rotatable;
 	}
 
@@ -19,7 +25,13 @@ public enum SpotContent {
 	}
 
 	public Texture getTexture() {
-		return texture;
+		return textureConstants.getTexture();
+	}
+
+	public int[] getAnchorPoints() {
+		int[] ap = new int[4];
+		System.arraycopy(anchorPoints, 0, ap, 0, 4);
+		return ap;
 	}
 
 	public boolean isRotatable() {

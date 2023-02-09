@@ -1,21 +1,19 @@
 package com.mcoder.nobodysland.view.level;
 
+import com.mcoder.j2dge.scene.View;
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.scene.View;
-import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.sprite.Enemy;
 import com.mcoder.nobodysland.view.sprite.EntityType;
 import com.mcoder.nobodysland.view.sprite.Wave;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Level implements View, MouseListener, MouseMotionListener, Serializable {
+public class Level implements View, MouseMotionListener, Serializable {
 	private int fileIndex;
 
 	private final Spot[][] grid;
@@ -99,29 +97,34 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 			getCurrentWave().show(g2d);
 	}
 
-	@Override
-	public void mouseClicked(MouseEvent mouseEvent) {}
+	public void setFloorAt(int row, int col, SpotContent floor) {
+		if (floor == null || row >= grid.length || row < 0 || col >= grid[row].length ||  col < 0) return;
+		grid[row][col].setFloor(floor);
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		if (!playing) return;
+		int[] desiredAnchorPoints = new int[4];
+		if (row > 0 && (grid[row-1][col].getFloor() == SpotContent.WAY || grid[row-1][col].getFloor() == SpotContent.WAY_TURN))
+			desiredAnchorPoints[0] = 1;
+		else if (col <= grid[row].length-1 && (grid[row][col+1].getFloor() == SpotContent.WAY || grid[row][col+1].getFloor() == SpotContent.WAY_TURN))
+			desiredAnchorPoints[1] = 1;
+		else if (row <= grid.length-1 && (grid[row+1][col].getFloor() == SpotContent.WAY || grid[row+1][col].getFloor() == SpotContent.WAY_TURN))
+			desiredAnchorPoints[2] = 1;
+		else if (col > 0 && (grid[row][col-1].getFloor() == SpotContent.WAY || grid[row][col-1].getFloor() == SpotContent.WAY_TURN))
+			desiredAnchorPoints[3] = 1;
 
-		Spot spot = findSpotUnder(e.getX(), e.getY());
-		if (e.getButton() == MouseEvent.BUTTON1) {
-			if (spot.getFloor() == SpotContent.GRASS && spot.getGun() == null)
-				Game.getPlayer().locateGun(spot);
-		} else if (e.getButton() == MouseEvent.BUTTON3 && spot.getGun() != null)
-			Game.getPlayer().removeGun(spot);
+		grid[row][col].match(desiredAnchorPoints);
+
+		if (row > 0)
+			grid[row-1][col].onNeighborChange(grid[row][col]); // Top
+
+		if (col < grid[row].length-1)
+			grid[row][col+1].onNeighborChange(grid[row][col]); // Right
+
+		if (row < grid.length-1)
+			grid[row+1][col].onNeighborChange(grid[row][col]); // Bottom
+
+		if (col > 0)
+			grid[row][col-1].onNeighborChange(grid[row][col]); // Left
 	}
-
-	@Override
-	public void mouseReleased(MouseEvent mouseEvent) {}
-
-	@Override
-	public void mouseEntered(MouseEvent mouseEvent) {}
-
-	@Override
-	public void mouseExited(MouseEvent mouseEvent) {}
 
 	@Override
 	public void mouseDragged(MouseEvent mouseEvent) {}
@@ -153,5 +156,9 @@ public class Level implements View, MouseListener, MouseMotionListener, Serializ
 
 	public boolean isFinished() {
 		return getCurrentWave().isFinished() && currWave == waves.size()-1;
+	}
+
+	public Spot getSpotAt(int row, int col) {
+		return grid[row][col];
 	}
 }

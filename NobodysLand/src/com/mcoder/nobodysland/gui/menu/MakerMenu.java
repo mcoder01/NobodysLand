@@ -1,9 +1,9 @@
 package com.mcoder.nobodysland.gui.menu;
 
+import com.mcoder.j2dge.scene.Screen;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.gui.widget.Button;
 import com.mcoder.nobodysland.io.ResourceManager;
-import com.mcoder.nobodysland.scene.Screen;
 import com.mcoder.nobodysland.view.Game;
 
 public class MakerMenu extends GenericMenu {

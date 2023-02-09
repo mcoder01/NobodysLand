@@ -1,8 +1,8 @@
 package com.mcoder.nobodysland;
 
+import com.mcoder.j2dge.scene.Screen;
 import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.menu.MainMenu;
-import com.mcoder.nobodysland.scene.Screen;
 
 import javax.swing.*;
 

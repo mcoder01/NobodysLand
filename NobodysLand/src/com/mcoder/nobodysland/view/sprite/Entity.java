@@ -1,5 +1,7 @@
 package com.mcoder.nobodysland.view.sprite;
 
+import com.mcoder.j2dge.view.sprite.Sprite;
+
 import java.awt.*;
 import java.io.Serializable;
 

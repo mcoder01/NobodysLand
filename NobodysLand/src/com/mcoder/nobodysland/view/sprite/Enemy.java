@@ -1,12 +1,14 @@
 package com.mcoder.nobodysland.view.sprite;
 
+import com.mcoder.j2dge.math.Vector;
+import com.mcoder.j2dge.view.anim.Animation;
+import com.mcoder.j2dge.view.anim.Animator;
+import com.mcoder.j2dge.view.anim.KeyFrame;
+import com.mcoder.j2dge.view.anim.Knob;
+import com.mcoder.j2dge.view.sprite.Sprite;
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.math.Vector;
 import com.mcoder.nobodysland.view.Game;
-import com.mcoder.nobodysland.view.Texture;
-import com.mcoder.nobodysland.view.anim.Animation;
-import com.mcoder.nobodysland.view.anim.Animator;
-import com.mcoder.nobodysland.view.anim.KeyFrame;
+import com.mcoder.nobodysland.view.TextureConstants;
 import com.mcoder.nobodysland.view.level.Spot;
 
 import java.awt.*;
@@ -70,17 +72,20 @@ public class Enemy extends Entity implements Serializable {
 	}
 
 	private void explode() {
+		explodeAnim = new Sprite(TextureConstants.EXPLOSION.getTexture(), pos.getX(), pos.getY(), 50, 50);
 		Animation explosion = new Animation(200);
+		Knob scaleKnob = ds -> explodeAnim.setScale(explodeAnim.getScale()+ds);
+		Knob opacityKnob = dop -> explodeAnim.setOpacity((float) (explodeAnim.getOpacity()+dop));
+
 		KeyFrame start = new KeyFrame(0);
-		start.put(KeyFrame.Knob.SCALE, 1.0);
-		start.put(KeyFrame.Knob.OPACITY, 1.0);
+		start.put(scaleKnob, 1.0);
+		start.put(opacityKnob, 1.0);
 		explosion.add(start);
 		KeyFrame end = new KeyFrame(200);
-		end.put(KeyFrame.Knob.SCALE, 5.0);
-		end.put(KeyFrame.Knob.OPACITY, 0.0);
+		end.put(scaleKnob, 5.0);
+		end.put(opacityKnob, 0.0);
 		explosion.add(end);
-		explodeAnim = new Sprite(Texture.EXPLOSION, pos.getX(), pos.getY(), 50, 50);
-		Animator.launch(explosion, explodeAnim);
+		Animator.launch(explosion);
 		Game.getPlayer().hurt(explodeDamage);
 		hpLeft = 0;
 	}

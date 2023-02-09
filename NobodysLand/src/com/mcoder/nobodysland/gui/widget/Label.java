@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.gui.widget;
 
-import com.mcoder.nobodysland.scene.View;
+import com.mcoder.j2dge.scene.View;
 
 import java.awt.*;
 

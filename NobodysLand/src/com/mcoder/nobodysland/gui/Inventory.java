@@ -1,9 +1,9 @@
 package com.mcoder.nobodysland.gui;
 
+import com.mcoder.j2dge.scene.View;
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.scene.View;
 import com.mcoder.nobodysland.view.Item;
-import com.mcoder.nobodysland.view.Texture;
+import com.mcoder.nobodysland.view.TextureConstants;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -33,7 +33,7 @@ public class Inventory extends ArrayList<InventoryItem>
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
 
 		int x = getX(), y = getY();
-		g2d.drawImage(Texture.INVENTORY.getImage(), x, y, getWidth(), getHeight(), null);
+		g2d.drawImage(TextureConstants.INVENTORY.getTexture().getImage(), x, y, getWidth(), getHeight(), null);
 
 		for (int i = 0; i < size(); i++) {
 			int itemX = x + i * cellSize + 10;
@@ -49,7 +49,7 @@ public class Inventory extends ArrayList<InventoryItem>
 
 		int selectorX = x + selected * cellSize - 2;
 		int selectorY = y - 2;
-		g2d.drawImage(Texture.INVENTORY_SELECTOR.getImage(), selectorX, selectorY, cellSize + 4, cellSize + 4, null);
+		g2d.drawImage(TextureConstants.INVENTORY_SELECTOR.getTexture().getImage(), selectorX, selectorY, cellSize + 4, cellSize + 4, null);
 
 		if (hovered)
 			g2d.setComposite(oldComposite);

@@ -1,10 +1,10 @@
 package com.mcoder.nobodysland.view.level;
 
-import com.mcoder.nobodysland.gui.menu.GenericMenu;
+import com.mcoder.j2dge.scene.Display;
 import com.mcoder.nobodysland.gui.Inventory;
 import com.mcoder.nobodysland.gui.InventoryItem;
+import com.mcoder.nobodysland.gui.menu.GenericMenu;
 import com.mcoder.nobodysland.gui.menu.MakerMenu;
-import com.mcoder.nobodysland.scene.Display;
 import com.mcoder.nobodysland.view.Item;
 
 import java.awt.*;
@@ -82,10 +82,11 @@ public class LevelMaker extends Display implements MouseListener, MouseMotionLis
 		if (spot != null) {
 			Item item = inventory.pickSelectedItem();
 			if (item != null && item != spot.getFloor().toItem()) {
-				spot.setFloor((SpotContent) item.getGameObj());
+				SpotContent oldFloor = spot.getFloor();
+				level.setFloorAt(spot.getRow(), spot.getCol(), (SpotContent) item.getGameObj());
 				if (item == Item.WAY || item == Item.WAY_TURN)
 					level.getPath().add(spot);
-				else if (spot.getFloor() == SpotContent.WAY || spot.getFloor() == SpotContent.WAY_TURN)
+				else if (oldFloor == SpotContent.WAY || oldFloor == SpotContent.WAY_TURN)
 					level.getPath().remove(spot);
 				return true;
 			}

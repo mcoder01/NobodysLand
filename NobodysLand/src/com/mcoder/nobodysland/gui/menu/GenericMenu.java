@@ -1,9 +1,9 @@
 package com.mcoder.nobodysland.gui.menu;
 
+import com.mcoder.j2dge.scene.Display;
+import com.mcoder.j2dge.scene.Screen;
+import com.mcoder.j2dge.scene.View;
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.scene.Display;
-import com.mcoder.nobodysland.scene.Screen;
-import com.mcoder.nobodysland.scene.View;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

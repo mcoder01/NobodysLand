@@ -1,7 +1,7 @@
 package com.mcoder.nobodysland.view.sprite.placeable;
 
+import com.mcoder.j2dge.math.Vector;
 import com.mcoder.nobodysland.Window;
-import com.mcoder.nobodysland.math.Vector;
 import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.level.Spot;
 import com.mcoder.nobodysland.view.sprite.*;
