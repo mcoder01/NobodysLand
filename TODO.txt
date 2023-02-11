@@ -1,1 +1,8 @@
-
+- Improve level maker (auto-adjusting paths)
+- Add main menu background
+- Add game icon
+- Add game sounds
+- Change soldier texture
+- Add more turrets and enemies
+- Add progress bar for level completion
+- Improve textures

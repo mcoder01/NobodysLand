@@ -33,7 +33,7 @@ public abstract class GenericMenu extends Display implements KeyListener {
 
     @Override
     public void show(Graphics2D g2d) {
-        g2d.setColor(new Color(0, 0, 0, 0.3f));
+        g2d.setColor(new Color(0, 0, 0, 0.5f));
         g2d.fillRect(0, 0, Window.width, Window.height);
         views.forEach(v -> v.show(g2d));
     }
