@@ -9,43 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Fixed resource managing issues">
-      <change afterPath="$PROJECT_DIR$/../.idea/NobodysLand.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/J2DGE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NobodysLand/saves/player01.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/SpriteAnimation.java" afterDir="false" />
+    <list default="true" id="ed26794c-cfe7-42dc-bc09-dc0a540c37b2" name="Changes" comment="Extrapolated J2DGE library">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NobodysLand.iml" beforeDir="false" afterPath="$PROJECT_DIR$/NobodysLand.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NobodysLand/levels/level1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NobodysLand/levels/level2.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/GenericMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/GenericMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/LevelLostMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/menu/LevelLostMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/widget/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/gui/widget/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/math/Vector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Display.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/Screen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/scene/View.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/TextureConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/anim/Animation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/anim/Animator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/anim/KeyFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/anim/SpriteAnimation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/LevelPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Spot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/Spot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/SpotContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/level/SpotContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/EntityType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/EntityType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Sprite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Wave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/Wave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/placeable/FixedGun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mcoder/nobodysland/view/sprite/placeable/FixedGun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +32,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/manuel/IdeaProjects/J2DGE",
+    "last_opened_file_path": "/home/manuel/IdeaProjects/NobodysLand/NobodysLand",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -256,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668707226360</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Extrapolated J2DGE library">
+      <created>1675948612205</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1675948612206</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -292,7 +266,8 @@
     <MESSAGE value="Fixed level 2 and the tick rate" />
     <MESSAGE value="Moved and fixed game data folder issues" />
     <MESSAGE value="Fixed resource managing issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed resource managing issues" />
+    <MESSAGE value="Extrapolated J2DGE library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extrapolated J2DGE library" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

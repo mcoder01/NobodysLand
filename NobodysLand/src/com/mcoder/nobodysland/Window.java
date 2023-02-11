@@ -12,6 +12,7 @@ public class Window {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame(appName);
+		Screen.getInstance().setSize(width, height);
 		frame.add(Screen.getInstance());
 		frame.pack();
 		frame.setLocationRelativeTo(null);
