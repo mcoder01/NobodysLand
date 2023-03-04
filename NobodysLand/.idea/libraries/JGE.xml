@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="J2DGE">
+  <library name="JGE">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/J2DGE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/JGE.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

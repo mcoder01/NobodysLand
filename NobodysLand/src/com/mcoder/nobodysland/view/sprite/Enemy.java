@@ -1,11 +1,8 @@
 package com.mcoder.nobodysland.view.sprite;
 
-import com.mcoder.j2dge.math.Vector;
-import com.mcoder.j2dge.view.anim.Animation;
-import com.mcoder.j2dge.view.anim.Animator;
-import com.mcoder.j2dge.view.anim.KeyFrame;
-import com.mcoder.j2dge.view.anim.Knob;
-import com.mcoder.j2dge.view.sprite.Sprite;
+import com.mcoder.jge.math.Vector;
+import com.mcoder.jge.anim.*;
+import com.mcoder.jge.g2d.Sprite;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.view.Game;
 import com.mcoder.nobodysland.view.TextureConstants;

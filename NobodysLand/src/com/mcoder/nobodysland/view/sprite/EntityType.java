@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view.sprite;
 
-import com.mcoder.j2dge.view.sprite.Texture;
+import com.mcoder.jge.util.Texture;
 import com.mcoder.nobodysland.view.Model;
 import com.mcoder.nobodysland.view.SpriteAnimation;
 import com.mcoder.nobodysland.view.TextureConstants;

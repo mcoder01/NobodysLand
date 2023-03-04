@@ -1,8 +1,6 @@
 package com.mcoder.nobodysland.gui.menu;
 
-import com.mcoder.j2dge.scene.Display;
-import com.mcoder.j2dge.scene.Screen;
-import com.mcoder.j2dge.scene.View;
+import com.mcoder.jge.screen.*;
 import com.mcoder.nobodysland.Window;
 
 import java.awt.*;
@@ -63,6 +61,6 @@ public abstract class GenericMenu extends Display implements KeyListener {
 
     public static void invoke(GenericMenu menu) {
         menu.prepare();
-        Screen.getInstance().addDrawer(menu);
+        menu.render();
     }
 }

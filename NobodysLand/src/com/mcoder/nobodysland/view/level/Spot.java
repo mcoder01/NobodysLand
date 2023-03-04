@@ -1,7 +1,7 @@
 package com.mcoder.nobodysland.view.level;
 
-import com.mcoder.j2dge.math.Vector;
-import com.mcoder.j2dge.scene.View;
+import com.mcoder.jge.math.Vector;
+import com.mcoder.jge.screen.View;
 import com.mcoder.nobodysland.view.sprite.placeable.FixedGun;
 
 import java.awt.*;

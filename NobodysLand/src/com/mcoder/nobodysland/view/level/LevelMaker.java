@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view.level;
 
-import com.mcoder.j2dge.scene.Display;
+import com.mcoder.jge.screen.Display;
 import com.mcoder.nobodysland.gui.Inventory;
 import com.mcoder.nobodysland.gui.InventoryItem;
 import com.mcoder.nobodysland.gui.menu.GenericMenu;

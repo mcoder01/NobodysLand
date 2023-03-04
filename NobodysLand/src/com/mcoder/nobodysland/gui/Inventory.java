@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.gui;
 
-import com.mcoder.j2dge.scene.View;
+import com.mcoder.jge.screen.View;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.view.Item;
 import com.mcoder.nobodysland.view.TextureConstants;

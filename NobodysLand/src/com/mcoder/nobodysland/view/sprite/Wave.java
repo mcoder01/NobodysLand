@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view.sprite;
 
-import com.mcoder.j2dge.scene.View;
+import com.mcoder.jge.screen.View;
 import com.mcoder.nobodysland.view.level.Level;
 
 import java.awt.*;

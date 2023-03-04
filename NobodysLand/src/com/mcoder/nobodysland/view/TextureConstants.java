@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view;
 
-import com.mcoder.j2dge.view.sprite.Texture;
+import com.mcoder.jge.util.Texture;
 import com.mcoder.nobodysland.io.ResourceManager;
 
 public enum TextureConstants {
@@ -16,7 +16,7 @@ public enum TextureConstants {
 	}
 
 	TextureConstants(String name, int w, int h) {
-		texture = new Texture(ResourceManager.loadTexture(name), w, h);
+		texture = new Texture(name, w, h);
 	}
 
 	public Texture getTexture() {

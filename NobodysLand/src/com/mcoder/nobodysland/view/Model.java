@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view;
 
-import com.mcoder.j2dge.view.sprite.Texture;
+import com.mcoder.jge.util.Texture;
 import com.mcoder.nobodysland.io.ResourceManager;
 
 import java.awt.image.BufferedImage;

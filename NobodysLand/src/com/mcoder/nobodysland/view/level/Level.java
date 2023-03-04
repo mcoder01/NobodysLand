@@ -1,6 +1,6 @@
 package com.mcoder.nobodysland.view.level;
 
-import com.mcoder.j2dge.scene.View;
+import com.mcoder.jge.screen.View;
 import com.mcoder.nobodysland.Window;
 import com.mcoder.nobodysland.view.sprite.Enemy;
 import com.mcoder.nobodysland.view.sprite.EntityType;
